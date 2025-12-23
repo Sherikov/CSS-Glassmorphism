@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Generator v3.0</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="controls-panel">
+            <h2>Glass Settings</h2>
+            
+            <div class="toggle-row">
+                <span class="toggle-label">Dark Text / Light Text</span>
+                <label class="switch">
+                    <input type="checkbox" id="text-color-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="toggle-row">
+                <span class="toggle-label">✨ Interactive Spotlight (Hover)</span>
+                <label class="switch">
+                    <input type="checkbox" id="spotlight-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <h3>Material Properties</h3>
+            <div class="control-group">
+                <div class="control-header"><label>Blur</label><span id="blur-val">15px</span></div>
+                <input type="range" id="blur" min="0" max="50" value="15">
+            </div>
+            <div class="control-group">
+                <div class="control-header"><label>Saturation</label><span id="saturation-val">180%</span></div>
+                <input type="range" id="saturation" min="100" max="300" value="180">
+            </div>
+            <div class="control-group">
+                <div class="control-header"><label>Transparency</label><span id="transparency-val">0.2</span></div>
+                <input type="range" id="transparency" min="0" max="1" step="0.01" value="0.2">
+            </div>
+            <div class="control-group">
+                 <label>Glass Color</label>
+                <input type="color" id="glass-color" value="#ffffff">
+            </div>
+
+             <h3>Dimensions</h3>
+            <div class="control-group">
+                <div class="control-header"><label>Width</label><span id="width-val">300px</span></div>
+                <input type="range" id="width" min="200" max="600" value="300">
+            </div>
+             <div class="control-group">
+                <div class="control-header"><label>Height</label><span id="height-val">200px</span></div>
+                <input type="range" id="height" min="150" max="500" value="200">
+            </div>
+            <div class="control-group">
+                <div class="control-header"><label>Radius</label><span id="radius-val">20px</span></div>
+                <input type="range" id="radius" min="0" max="50" value="20">
+            </div>
+             <div class="control-group">
+                <div class="control-header"><label>Outline</label><span id="outline-val">1px</span></div>
+                <input type="range" id="outline" min="0" max="5" step="0.5" value="1">
+            </div>
+
+            <h3>Background</h3>
+            <div class="bg-presets">
+                <button class="bg-btn bg-1"></button>
+                <button class="bg-btn bg-2"></button>
+                <button class="bg-btn bg-3"></button>
+                <button class="bg-btn bg-4"></button>
+            </div>
+            <div class="custom-bg-upload">
+                <label for="bg-file-input">📁 Upload Image</label>
+                <input type="file" id="bg-file-input" accept="image/png, image/jpeg">
+            </div>
+        </div>
+
+        <div class="preview-container">
+            <div class="preview-area" id="preview-area">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                
+                <div class="glass-card" id="glass-card">
+                    <h4>Spotlight</h4>
+                    <p>Hover over me to see the spotlight effect.</p>
+                </div>
+            </div>
+
+            <div class="code-container">
+                <button class="copy-btn" id="copy-btn">Copy CSS</button>
+                <div class="code-output" id="css-code"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./JS/script.js"></script>
+</body>
+</html>
