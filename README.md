@@ -1,6 +1,11 @@
 # CSS-Glassmorphism
 # 💎 Ultimate Glassmorphism Generator
 
+
+[![Live Preview](https://img.shields.io/badge/Live-Preview-brightgreen?style=for-the-badge&logo=html5)](https://sherikov.github.io/CSS-Glassmorphism/)
+
+
+
 A powerful, interactive web application that allows developers and designers to visually generate CSS code for the **Glassmorphism** effect (frosted glass). 
 
 Adjust blur, transparency, and colors in real-time, test it against different backgrounds, and copy the production-ready CSS with a single click.
