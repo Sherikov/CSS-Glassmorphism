@@ -1,1 +1,277 @@
-Ggg
+/* --- Base Styles & Variables --- */
+:root {
+    --bg-app: #121212;
+    --bg-panel: #1e1e1e;
+    --text-primary: #fff;
+    --text-secondary: #aaa;
+    --accent: #00d2ff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    background: var(--bg-panel);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+h2, h3 { margin-bottom: 15px; font-weight: 600; }
+h3 { font-size: 1.1rem; color: var(--text-secondary); margin-top: 20px;}
+
+/* --- Left Panel: Controls --- */
+.controls-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+/* Custom Scrollbar */
+.controls-panel::-webkit-scrollbar { width: 8px; }
+.controls-panel::-webkit-scrollbar-track { background: #2a2a2a; border-radius: 4px;}
+.controls-panel::-webkit-scrollbar-thumb { background: #444; border-radius: 4px;}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* --- CUSTOM SLIDER STYLING --- */
+
+/* 1. Reset default browser styles */
+input[type="range"] {
+    -webkit-appearance: none; /* Remove default WebKit styles */
+    width: 100%;
+    background: transparent; /* Transparent background to show custom track */
+    height: 30px; /* Increase hit area for easier grabbing */
+    cursor: pointer;
+}
+
+input[type="range"]:focus {
+    outline: none; /* Remove blue outline on click */
+}
+
+/* --- WEBKIT BROWSERS (Chrome, Safari, Edge) --- */
+
+/* The Track (Background line) */
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1); /* Glassy dark track */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s;
+}
+
+/* The Thumb (The draggable circle) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #fff;
+    /* Center the thumb vertically relative to the track */
+    margin-top: -7px; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4); /* subtle shadow */
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effects */
+input[type="range"]:hover::-webkit-slider-thumb {
+    background: var(--accent); /* Change to blue/cyan */
+    transform: scale(1.1); /* Grow slightly */
+    box-shadow: 0 0 10px var(--accent); /* Neon glow effect */
+}
+
+/* Active (Clicking/Dragging) effects */
+input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+    cursor: grabbing;
+}
+
+/* --- MOZILLA FIREFOX --- */
+
+/* The Track */
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s;
+}
+
+/* The Thumb */
+input[type="range"]::-moz-range-thumb {
+    border: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effects for Firefox */
+input[type="range"]:hover::-moz-range-thumb {
+    background: var(--accent);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+input[type="range"]:active::-moz-range-thumb {
+    transform: scale(1.2);
+    cursor: grabbing;
+}
+input[type="color"] {
+    width: 100%; height: 35px; border: none; cursor: pointer; background: none; border-radius: 5px;
+}
+
+/* --- Toggles --- */
+.toggle-row {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px;
+}
+.toggle-label { font-size: 0.95rem; }
+
+.switch { position: relative; display: inline-block; width: 40px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc; transition: .4s; border-radius: 24px;
+}
+.slider:before {
+    position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px;
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--accent); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* --- Background Management --- */
+.bg-presets {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px;
+}
+.bg-btn {
+    width: 100%; height: 40px; border-radius: 8px; border: 2px solid transparent;
+    cursor: pointer; transition: transform 0.2s, border-color 0.2s;
+}
+.bg-btn:hover { transform: scale(1.05); }
+.bg-btn.active { border-color: var(--accent); }
+
+.bg-1 { background: linear-gradient(45deg, #ff9a9e, #fad0c4); }
+.bg-2 { background: linear-gradient(120deg, #84fab0, #8fd3f4); }
+.bg-3 { background: linear-gradient(to right, #4facfe, #00f2fe); }
+.bg-4 { background: linear-gradient(to top, #fcc5e4, #fda34b, #ff7882, #c8699e, #7046aa, #0c1db8, #020f75); }
+
+.custom-bg-upload label {
+    display: block; width: 100%; padding: 10px;
+    background: #333; text-align: center; border-radius: 8px;
+    cursor: pointer; transition: background 0.3s; color: var(--text-secondary); font-size: 0.9rem;
+}
+.custom-bg-upload label:hover { background: #444; color: #fff;}
+#bg-file-input { display: none; }
+
+/* --- Right Panel: Preview Area --- */
+.preview-container {
+    display: flex; flex-direction: column; gap: 20px;
+}
+.preview-area {
+    position: relative;
+    background: linear-gradient(45deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    background-size: cover; background-position: center;
+    border-radius: 16px;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 400px; overflow: hidden;
+}
+.shape { position: absolute; border-radius: 50%; filter: blur(30px); opacity: 0.8; }
+.shape-1 { width: 150px; height: 150px; background: #ff0080; top: 10%; left: 10%; }
+.shape-2 { width: 200px; height: 200px; background: #7928ca; bottom: 10%; right: 10%; }
+
+/* --- Glass Card Styles --- */
+.glass-card {
+    position: relative; 
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease;
+    overflow: hidden; 
+    
+    /* Variables for mouse position (Spotlight) */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+/* Spotlight Effect Pseudo-element */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.15), 
+        transparent 40%
+    );
+    z-index: 2;
+    opacity: 0; 
+    transition: opacity 0.3s;
+    pointer-events: none; 
+}
+
+/* Activate Spotlight on Hover */
+.glass-card.interactive:hover::before {
+    opacity: 1;
+}
+
+.glass-card h4 { font-size: 1.5rem; margin-bottom: 10px; z-index: 3; }
+.glass-card p { font-size: 1rem; opacity: 0.8; z-index: 3; }
+
+/* --- Code Output Block --- */
+.code-container {
+    background: #151515; border-radius: 8px; padding: 15px; position: relative; flex-grow: 1;
+}
+.code-output {
+    font-family: 'Courier New', Courier, monospace; color: var(--accent);
+    font-size: 0.85rem; white-space: pre-wrap; word-break: break-all;
+}
+.copy-btn {
+    position: absolute; top: 10px; right: 10px;
+    background: #333; color: #fff; border: 1px solid #555;
+    padding: 5px 15px; border-radius: 5px; cursor: pointer;
+    font-size: 0.8rem; transition: all 0.3s ease;
+}
+.copy-btn:hover { background: #444; border-color: #fff; }
+
+@media (max-width: 850px) {
+    .container { grid-template-columns: 1fr; }
+    .controls-panel { max-height: none; overflow-y: visible; }
+}
